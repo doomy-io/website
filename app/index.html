@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Doomy</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL7Q7P6G5Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LL7Q7P6G5Z');
+
+    const playStoreUrl =
+      "https://play.google.com/store/apps/details?id=io.doomy.app";
+
+    let redirected = false;
+
+    function redirect() {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(playStoreUrl);
+    }
+
+    // Track the outbound redirect.
+    gtag('event', 'app_redirect', {
+      source: 'instagram',
+      event_callback: redirect,
+      event_timeout: 1200
+    });
+
+    // Fallback if analytics is blocked or fails to load.
+    setTimeout(redirect, 1500);
+  </script>
+</head>
+<body>
+  <p>Taking you to Google Play...</p>
+  <p>
+    <a href="https://play.google.com/store/apps/details?id=io.doomy.app">
+      Open Doomy on Google Play
+    </a>
+  </p>
+</body>
+</html>
